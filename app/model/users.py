@@ -21,4 +21,3 @@ class Users(Base):
     email = Column(Text, nullable=False, unique=True)
     image = Column(TEXT)
 
-    posts = relationship("Post", cascade="all, delete-orphan", back_populates="author")

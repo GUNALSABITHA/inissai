@@ -13,7 +13,6 @@ class Posts(Base):
     content  = Column(Text)
 
     author_id = Column(ForeignKey("users.id"))
-    author = relationship("Users", back_populates="posts")
 
     created_at = Column(
         TIMESTAMP(timezone=True), 

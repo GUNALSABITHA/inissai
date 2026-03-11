@@ -5,6 +5,7 @@ from typing import Annotated
 from fastapi.params import Depends
 from app.dependencies import get_db_async
 from app.services import user_service
+from app.schema import User
 
 
 router = APIRouter(prefix="/users", tags=["Users"])
@@ -13,11 +14,13 @@ router = APIRouter(prefix="/users", tags=["Users"])
 @router.post("/create", status_code=status.HTTP_201_CREATED)
 async def create_user(
     request: Request,
+    user: User.UserBase,
     db: Annotated[AsyncSession, Depends(get_db_async)]
+
                       
                       
 ):
     body = await request.body()
-    result = await user_service.create_user(body, db)
+    result = await user_service.create_user(user, db)
 
     

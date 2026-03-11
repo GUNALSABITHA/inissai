@@ -43,7 +43,10 @@ Base = declarative_base()
 
 def init_models():
     try:
+        from app.model import users, posts
         Base.metadata.create_all(bind=engine, checkfirst=True)
+        print("Tables detected:", Base.metadata.tables.keys())
+
     except Exception as e:
         print(f"Error initializing models: {e}")
 
