@@ -21,3 +21,4 @@ async def create_post(
     body = await request.body()
     result = await post_service.create_post(body, db)
     return result
+

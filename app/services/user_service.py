@@ -18,7 +18,7 @@ async def create_user(data: dict, db:AsyncSession ):
         )
         db.add(new_user)
         await db.commit()
-
+        
         return new_user
     except Exception as e:
         await db.rollback()

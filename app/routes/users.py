@@ -15,12 +15,11 @@ router = APIRouter(prefix="/users", tags=["Users"])
 async def create_user(
     request: Request,
     user: User.UserBase,
-    db: Annotated[AsyncSession, Depends(get_db_async)]
-
-                      
+    db: Annotated[AsyncSession, Depends(get_db_async)]                    
                       
 ):
     body = await request.body()
     result = await user_service.create_user(user, db)
+    return result
 
     
